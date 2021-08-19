@@ -1,8 +1,8 @@
 import "./App.css";
-import SwapiTable from "./SwapiTable";
+import Home from "./Home";
 
 function App() {
-  return <SwapiTable />;
+  return <Home />;
 }
 
 export default App;

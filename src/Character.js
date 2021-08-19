@@ -1,14 +1,15 @@
 import React from "react";
 
-function Character() {
+function Character(props) {
+  const { character } = props;
   return (
     <tr>
-      <td>Someone</td>
-      <td>2090.12.31</td>
-      <td>3 meters</td>
-      <td>7000kg</td>
-      <td>Endor</td>
-      <td>Unknown</td>
+      <td>{character.name}</td>
+      <td>{character.birth}</td>
+      <td>{character.height}</td>
+      <td>{character.mass}</td>
+      <td>{character.home}</td>
+      <td>{character.species}</td>
     </tr>
   );
 }

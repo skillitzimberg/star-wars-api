@@ -16,10 +16,19 @@ function SwapiTable() {
         </tr>
       </thead>
       <tbody>
-        <Character />
+        <Character character={character} />
       </tbody>
     </Table>
   );
 }
+
+const character = {
+  name: "Han Solo",
+  birth: "2090.12.03",
+  height: "2 meters",
+  mass: "80kg",
+  home: "Corelia",
+  species: "Human",
+};
 
 export default SwapiTable;
