@@ -49,6 +49,9 @@
 - Use `useEffect to make API call when the component mounts
 - Display all results in table
 
+- Handle Homeworlds
+  - Make api call for Homeworld for each character
+
 ### Styling
 
 ### TEST CASE PSEUDO CODE

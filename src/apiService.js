@@ -7,12 +7,20 @@ class Swapi {
     });
   }
 
-  getPeople() {
-    return this.instance.get("people");
+  async getPeople() {
+    let people = [];
+    await this.instance.get("people").then((resp) => {
+      people = resp.data.results;
+    });
+    return people;
   }
 
   getPlanets() {
     return this.instance.get("planets");
+  }
+
+  getPlanet(id) {
+    return this.instance.get(`planets/${id}`);
   }
 
   getSpecies() {
