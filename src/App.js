@@ -15,7 +15,6 @@ function App() {
   }, []);
 
   if (characters.length === 0) return null;
-  console.log("Characters", characters);
   console.log("Species", species);
   return (
     <main>
