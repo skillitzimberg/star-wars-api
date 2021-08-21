@@ -40,6 +40,17 @@
     - `character_row`? (name? idea?)
   - render these components together to display the table
 
+### API
+
+- Create an API service with Axios
+  - Set base URL
+  - create getPeople method
+- Use `useState` for characters & function to update characters state
+- Use `useEffect to make API call when the component mounts
+- Display all results in table
+
+### Styling
+
 ### TEST CASE PSEUDO CODE
 
 1. When a USER visits the page
@@ -56,4 +67,15 @@
 
 ## Things I Did NOT Plan For Or Know About
 
+- Creating an Axios instance to use throughout the app
+- Knowing when to use a class component vs a function component
+- Where in the app to keep state
+- It looks like I'll want to make a call for species, homeworld, to use to get some of a character's details. I only want to do this once and reuse the lists, if at all possible. Where would I want this done? Someplace that only mounts once . . .
+
 ## Googled
+
+- `how to use Axios in React`:
+  - https://www.digitalocean.com/community/tutorials/react-axios-react;
+  - https://www.freecodecamp.org/news/how-to-use-axios-with-react/;
+- `react use class or function`:
+  - https://www.twilio.com/blog/react-choose-functional-components;

@@ -2,7 +2,10 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import Character from "./Character";
 
-function SwapiTable() {
+function SwapiTable({ characters }) {
+  // console.log("Characters", characters);
+  if (characters.length === 0) return null;
+
   return (
     <Table>
       <thead>
@@ -16,19 +19,10 @@ function SwapiTable() {
         </tr>
       </thead>
       <tbody>
-        <Character character={character} />
+        <Character character={characters[0]} />
       </tbody>
     </Table>
   );
 }
-
-const character = {
-  name: "Han Solo",
-  birth: "2090.12.03",
-  height: "2 meters",
-  mass: "80kg",
-  home: "Corelia",
-  species: "Human",
-};
 
 export default SwapiTable;
