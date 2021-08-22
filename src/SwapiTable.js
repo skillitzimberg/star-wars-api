@@ -23,7 +23,9 @@ function SwapiTable({ characters }) {
 }
 
 function renderCharacters(characters) {
-  return characters.map((character) => <Character character={character} />);
+  return characters.map((character) => (
+    <Character key={character.name} character={character} />
+  ));
 }
 
 export default SwapiTable;
