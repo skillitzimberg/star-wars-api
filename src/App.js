@@ -19,8 +19,9 @@ function App() {
             person.homeworld = planet.data.name;
           });
         });
-        setCharacters(people);
-      });
+        return people;
+      })
+      .then((people) => setCharacters(people));
   }, []);
 
   if (!characters || characters.length === 0) return null;
