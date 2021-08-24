@@ -9,8 +9,8 @@ class Swapi {
   }
 
   // returns Promise<AxiosResponse<any>>
-  getPeople() {
-    return this.instance.get("people");
+  async getPeople() {
+    return await this.instance.get("people");
   }
 
   // returns Promise<AxiosResponse<any>>
@@ -19,8 +19,10 @@ class Swapi {
   }
 
   // returns Promise<AxiosResponse<any>>
-  getPlanet(url) {
-    return this.instance.get(url);
+  async getHomeworld(url) {
+    const homeworld = await this.instance.get(url);
+    console.log(homeworld);
+    return homeworld.data.name;
   }
 }
 
