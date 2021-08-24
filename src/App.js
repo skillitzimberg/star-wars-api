@@ -1,32 +1,33 @@
 import axios from "axios";
-import Api from "./apiService";
 import React from "react";
 import "./App.css";
 import Search from "./Search";
 import SwapiTable from "./SwapiTable";
 
 function App() {
-  const swapi = new Api();
   const [characters, setCharacters] = React.useState([]);
   const [planets, setPlanets] = React.useState({});
 
   React.useEffect(() => {
     const getCharacterData = () => {
-      swapi.getPeople().then((resp) => {
-        const people = resp.data.results;
-        console.log("people: ", people);
-        people.map(async (person) => {
-          person.homeworld = getHomeworld(person);
+      axios
+        .get("https://swapi.dev/api/people")
+        .then((resp) => {
+          const people = resp.data.results;
+          console.log("people: ", people);
+          people.map(async (person) => {
+            person.homeworld = getHomeworld(person);
 
-          return setCharacters([...characters, people]);
-        });
-      });
+            return setCharacters([...characters, people]);
+          });
+        })
+        .catch((err) => console.log(err));
     };
     getCharacterData();
-  }, [characters, swapi]);
+  }, [characters]);
 
   const getHomeworld = async (character) => {
-    const homeworld = await axios.get(character.homeworld);
+    const homeworld = axios.get(character.homeworld);
     return homeworld.data.name;
   };
 
