@@ -1,4 +1,4 @@
-import axios from "axios";
+import swapi from "./apiService";
 import React from "react";
 import "./App.css";
 import Search from "./Search";
@@ -9,27 +9,12 @@ function App() {
   const [planets, setPlanets] = React.useState({});
 
   React.useEffect(() => {
-    const getCharacterData = () => {
-      axios
-        .get("https://swapi.dev/api/people")
-        .then((resp) => {
-          const people = resp.data.results;
-          console.log("people: ", people);
-          people.map(async (person) => {
-            person.homeworld = getHomeworld(person);
-
-            return setCharacters([...characters, people]);
-          });
-        })
-        .catch((err) => console.log(err));
+    const getCharacters = async () => {
+      const people = await swapi.getCharacters();
+      setCharacters(people);
     };
-    getCharacterData();
-  }, [characters]);
-
-  const getHomeworld = async (character) => {
-    const homeworld = axios.get(character.homeworld);
-    return homeworld.data.name;
-  };
+    getCharacters();
+  }, []);
 
   if (!characters || characters.length === 0) return null;
   console.log("Characters", characters);

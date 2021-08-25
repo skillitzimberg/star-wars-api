@@ -8,22 +8,55 @@ class Swapi {
     });
   }
 
+  async getCharacters() {
+    return await this.fetchPeople().then(
+      async (resp) => await this.mapHomeworldsAndSpecies(resp)
+    );
+  }
+
   // returns Promise<AxiosResponse<any>>
-  async getPeople() {
+  async fetchPeople() {
     return await this.instance.get("people");
   }
 
-  // returns Promise<AxiosResponse<any>>
-  getPlanets() {
-    return this.instance.get("planets");
+  async mapHomeworldsAndSpecies(resp) {
+    return await Promise.all(
+      resp.data.results.map(async (person) => {
+        person.homeworld = await swapi.getHomeworld(person.homeworld);
+        person.species = await swapi.getSpecies(person.species);
+        return person;
+      })
+    );
   }
 
   // returns Promise<AxiosResponse<any>>
-  async getHomeworld(url) {
-    const homeworld = await this.instance.get(url);
-    console.log(homeworld);
+  async getHomeworld(homeworldURL) {
+    const homeworldPath = this.getPath(homeworldURL);
+    const homeworld = await this.instance.get(homeworldPath);
     return homeworld.data.name;
   }
+
+  // returns Promise<AxiosResponse<any>>
+  async getSpecies(speciesArray) {
+    if (speciesArray.length === 0) return "Human";
+
+    const speciesPath = this.getPath(speciesArray[0]);
+    const species = await this.instance.get(speciesPath);
+    return species.data.name;
+  }
+
+  async mapSpecies(resp) {
+    console.log(resp.data);
+    return await Promise.all(
+      resp.data.results.map(async (person) => {
+        person.species = await swapi.getSpecies(person.species);
+        return person;
+      })
+    );
+  }
+
+  getPath = (URL) => URL.split("https://swapi.dev/api/")[1];
 }
 
-export default Swapi;
+const swapi = new Swapi();
+export default swapi;
