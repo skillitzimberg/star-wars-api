@@ -3,7 +3,16 @@ import Table from "react-bootstrap/Table";
 import Character from "./Character";
 
 function SwapiTable({ characters }) {
-  if (characters.length === 0) return null;
+  if (characters.length === 0) {
+    characters.push({
+      name: "No Results Found",
+      birth: null,
+      height: null,
+      mass: null,
+      home: null,
+      species: null,
+    });
+  }
 
   return (
     <Table>
@@ -23,9 +32,9 @@ function SwapiTable({ characters }) {
 }
 
 function renderCharacters(characters) {
-  return characters.map((character) => (
-    <Character key={character.name} character={character} />
-  ));
+  return characters.map((character) => {
+    return <Character key={character.name} character={character} />;
+  });
 }
 
 export default SwapiTable;

@@ -1,16 +1,6 @@
 import React from "react";
 
 function Character({ character }) {
-  const noResultsCharacter = {
-    name: "No Results Found",
-    birth: null,
-    height: null,
-    mass: null,
-    home: null,
-    species: null,
-  };
-
-  if (!character) character = noResultsCharacter;
   return (
     <tr>
       <td>{character.name}</td>

@@ -15,9 +15,6 @@ function App() {
     getCharacters();
   }, []);
 
-  if (!characters || characters.length === 0) return null;
-  console.log("Characters", characters);
-
   const handleSearch = async (e) => {
     e.preventDefault();
 
