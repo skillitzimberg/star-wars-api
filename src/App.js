@@ -6,7 +6,6 @@ import SwapiTable from "./SwapiTable";
 
 function App() {
   const [characters, setCharacters] = React.useState([]);
-  const [planets, setPlanets] = React.useState({});
 
   React.useEffect(() => {
     const getCharacters = async () => {
@@ -18,12 +17,18 @@ function App() {
 
   if (!characters || characters.length === 0) return null;
   console.log("Characters", characters);
-  console.log("Planets", planets);
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    const result = await swapi.search(e.target.value);
+    setCharacters(result);
+  };
 
   return (
     <main>
       <h1>STAR WARS CHARACTER SEARCH</h1>
-      <Search />
+      <Search onSearch={handleSearch} />
       <SwapiTable characters={characters} />
     </main>
   );
