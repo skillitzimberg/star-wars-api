@@ -11,9 +11,9 @@ function App() {
   const [characters, setCharacters] = React.useState([]);
 
   React.useEffect(() => {
-    console.log("Use Effect");
     const getCharacters = async () => {
       const people = await swapi.getCharacters(path);
+      if (!!reset) setReset(false);
       setCharacters(people);
     };
     getCharacters();
@@ -30,7 +30,7 @@ function App() {
   };
 
   const handleClear = () => {
-    console.log("cleared");
+    setReset(!reset);
   };
 
   return (
