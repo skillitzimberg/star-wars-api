@@ -74,6 +74,15 @@
 - Knowing when to use a class component vs a function component
 - Where in the app to keep state
 - It looks like I'll want to make a call for species, homeworld, to use to get some of a character's details. I only want to do this once and reuse the lists, if at all possible. Where would I want this done? Someplace that only mounts once . . .
+- How are tables handled on small devices?
+
+## TODO
+
+I ran out of time considering that the next projects will be more intensive and difficult, so I had to make a choice to not do much styling or refactoring of this project right now.
+
+- Things I would like to implement at some point include:
+  - Mobile view. How are tables handled on small devices? react-bootstrap just allows horizontal scrolling, I think.
+  - Clear search field option
 
 ## Googled
 
@@ -82,3 +91,9 @@
   - https://www.freecodecamp.org/news/how-to-use-axios-with-react/;
 - `react use class or function`:
   - https://www.twilio.com/blog/react-choose-functional-components;
+- `functional vs object oriented javascript`:
+  - https://medium.com/@sho.miyata.1/the-object-oriented-programming-vs-functional-programming-debate-in-a-beginner-friendly-nutshell-24fb6f8625cc;
+- `services in React`:
+  - https://stackoverflow.com/questions/35855781/having-services-in-react-application;
+  - https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0;
+  - https://medium.com/@learnreact/container-components-c0e67432e005;

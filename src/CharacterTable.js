@@ -2,7 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import Character from "./Character";
 
-function SwapiTable({ characters }) {
+function CharacterTable({ characters }) {
   if (characters.length === 0) {
     characters.push({
       name: "No Results Found",
@@ -15,7 +15,7 @@ function SwapiTable({ characters }) {
   }
 
   return (
-    <Table>
+    <Table striped variant="dark" size="sm" responsive="sm">
       <thead>
         <tr>
           <th>Name</th>
@@ -37,4 +37,4 @@ function renderCharacters(characters) {
   });
 }
 
-export default SwapiTable;
+export default CharacterTable;

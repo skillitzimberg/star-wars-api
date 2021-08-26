@@ -28,16 +28,16 @@ Project will be written in:
 
 ## Deliverables
 
-- There should be a single page (Home page)
-- The home page should have a table of star wars character
-- Each row should contain the character’s:
+- √ There should be a single page (Home page)
+- √ The home page should have a table of star wars character
+- √ Each row should contain the character’s:
   - Name
   - Birth date
   - Height
   - Mass
   - Homeworld
   - Species
-- The table should automatically populate when opening the home page
-- The table should be limit results to 10 characters at a time
-- There should be a single input element for searching a specific user
-- Uses the swapi.dev API to pull in data
+- √ The table should automatically populate when opening the home page
+- √ The table should be limit results to 10 characters at a time
+- √ There should be a single input element for searching a specific user
+- √ Uses the swapi.dev API to pull in data

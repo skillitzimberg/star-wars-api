@@ -7,25 +7,33 @@ class Swapi {
     });
   }
 
-  async search(query) {
-    return await this.instance
-      .get(`people/?search=${query}`)
-      .then(async (resp) => await this.mapHomeworldsAndSpecies(resp));
-  }
+  paginationPaths = {};
 
-  async getCharacters() {
-    return await this.fetchPeople().then(
-      async (resp) => await this.mapHomeworldsAndSpecies(resp)
+  async search(query) {
+    console.log("query", query);
+    return await this.fetch(`people/?search=${query}`).then(
+      async (resp) => await this.mapHomeworldsAndSpecies(resp.data)
     );
   }
 
-  async fetchPeople() {
-    return await this.instance.get("people");
+  async getCharacters(path) {
+    return await this.fetch(path).then(
+      async (resp) => await this.mapHomeworldsAndSpecies(resp.data)
+    );
   }
 
-  async mapHomeworldsAndSpecies(resp) {
+  async fetch(path) {
+    console.log(path);
+
+    const resp = await this.instance.get(path);
+    this.paginationPaths["prev"] = resp.data.previous;
+    this.paginationPaths["next"] = resp.data.next;
+    return resp;
+  }
+
+  async mapHomeworldsAndSpecies(data) {
     return await Promise.all(
-      resp.data.results.map(async (person) => {
+      data.results.map(async (person) => {
         person.homeworld = await swapi.getHomeworld(person.homeworld);
         person.species = await swapi.getSpecies(person.species);
         return person;
