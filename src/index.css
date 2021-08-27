@@ -49,10 +49,29 @@ label {
 }
 
 input {
-  border: none;
+  border: 1px solid limegreen;
   border-radius: 1em;
   text-align: center;
   margin: 0 0 2em 0;
+  background-color: transparent;
+  color: limegreen;
+}
+
+#search-row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+#clearSearch {
+  display: inline-block;
+  border: 1px solid limegreen;
+  border-radius: 1em;
+  text-align: center;
+  margin: 0 0 0 1em;
+  padding: 0 1em;
+  background-color: limegreen;
+  color: #333;
 }
 
 .pagination {

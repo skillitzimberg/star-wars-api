@@ -2,8 +2,6 @@ import React from "react";
 
 export default function Search(props) {
   function clearInput() {
-    console.log("cleared");
-
     document.getElementById("search").value = "";
     props.onClear();
   }
@@ -11,15 +9,19 @@ export default function Search(props) {
     <>
       <label htmlFor="search">Search Characters</label>
 
-      <input
-        id="search"
-        type="search"
-        placeholder="Search Characters"
-        name="search"
-        onChange={props.onSearch}
-      />
+      <div id="search-row">
+        <input
+          id="search"
+          type="search"
+          placeholder="Search Characters"
+          name="search"
+          onChange={props.onSearch}
+        />
 
-      <button onClick={clearInput}>Clear Search</button>
+        <button id="clearSearch" onClick={clearInput}>
+          clear
+        </button>
+      </div>
     </>
   );
 }

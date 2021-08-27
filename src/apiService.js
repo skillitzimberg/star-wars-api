@@ -22,8 +22,6 @@ class Swapi {
   }
 
   async fetch(path) {
-    console.log(path);
-
     const resp = await this.instance.get(path);
     this.paginationPaths["prev"] = resp.data.previous;
     this.paginationPaths["next"] = resp.data.next;
