@@ -82,7 +82,7 @@ I ran out of time considering that the next projects will be more intensive and 
 
 - Things I would like to implement at some point include:
   - Mobile view. How are tables handled on small devices? react-bootstrap just allows horizontal scrolling, I think.
-  - Clear search field option
+  - Caching homeworld results to limit API calls
 
 ## Googled
 
