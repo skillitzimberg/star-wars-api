@@ -7,31 +7,27 @@ import PaginationControl from "./PaginationControl";
 
 function App() {
   const [path, setPath] = React.useState("people");
-  const [reset, setReset] = React.useState(0.0);
   const [characters, setCharacters] = React.useState([]);
 
   React.useEffect(() => {
     const getCharacters = async () => {
       const people = await swapi.getCharacters(path);
-      if (!reset) setReset(false);
       setCharacters(people);
     };
     getCharacters();
-  }, [path, reset]);
+  }, [path]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const result = await swapi.search(e.target.value);
-    setCharacters(result);
+    setPath(`people/?search=${e.target.value}`);
   };
 
   const handlePagination = (newPath) => {
     if (newPath) setPath(newPath);
   };
 
-  const handleClear = () => {
-    console.log(reset);
-    setReset(Math.random());
+  const handleClear = async () => {
+    setPath("people");
   };
 
   return (
