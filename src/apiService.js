@@ -9,12 +9,6 @@ class Swapi {
 
   paginationPaths = {};
 
-  async search(query) {
-    return await this.fetch(`people/?search=${query}`).then(
-      async (resp) => await this.mapHomeworldsAndSpecies(resp.data)
-    );
-  }
-
   async getCharacters(path) {
     return await this.fetch(path).then(
       async (resp) => await this.mapHomeworldsAndSpecies(resp.data)
